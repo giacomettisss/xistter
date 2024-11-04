@@ -1,0 +1,47 @@
+Xistter/
+├── backend/
+│   ├── api/
+│   │   ├── user/
+│   │   │   ├── userController.js       # Logic for login, registration, etc.
+│   │   │   ├── userRoutes.js           # User API routes
+│   │   │   └── userDB.js               # Database interactions for users
+│   │   │
+│   │   ├── profile/
+│   │   │   ├── profileController.js    # Logic for user profiles
+│   │   │   ├── profileRoutes.js        # Profile API routes
+│   │   │   └── profileDB.js            # Database interactions for profiles
+│   │   │
+│   │   ├── post/
+│   │   │   ├── postController.js       # Logic for posts
+│   │   │   ├── postRoutes.js           # Post API routes
+│   │   │   └── postDB.js               # Database interactions for posts
+│   │   │
+│   │   ├── comment/
+│   │   │   ├── commentController.js    # Logic for comments
+│   │   │   ├── commentRoutes.js        # Comment API routes
+│   │   │   └── commentDB.js            # Database interactions for comments
+│   │   │
+│   │   └── like/
+│   │       ├── likeController.js       # Logic for likes
+│   │       ├── likeRoutes.js           # Like API routes
+│   │       └── likeDB.js               # Database interactions for likes
+│   │
+│   ├── config/
+│   │   ├── db.js                       # Database connection
+│   │   └── config.js                   # General configurations
+│   │
+│   ├── sql/
+│   │   └── procedures.sql              # File with stored procedures for the database
+│   │
+│   ├── .env                            # Environment variables
+│   ├── server.js                       # Main backend file
+│   └── package.json                    # Dependencies and scripts
+│
+└── frontend/
+    ├── public/                         # Static public files
+    │   ├── css/
+    │   ├── js/
+    │   └── index.html
+    ├── src/                            # Frontend source code
+    └── package.json                    # Frontend dependencies and scripts
+
