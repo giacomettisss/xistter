@@ -1,0 +1,26 @@
+{
+  "name": "xistter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "init-db": "node backend/config/createTables.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/giacomettisss/xistter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/giacomettisss/xistter/issues"
+  },
+  "homepage": "https://github.com/giacomettisss/xistter#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "pg": "^8.13.1",
+    "sqlite3": "^5.1.7"
+  }
+}
