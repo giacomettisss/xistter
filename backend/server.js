@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const RepositoryFactory = require('./api/post/repositoryFactory');
+const PostRepositoryFactory = require('./api/post/repositoryFactory');
+const UserRepositoryFactory = require('./api/user/repositoryFactory');
 
 dotenv.config();
 
@@ -9,11 +10,17 @@ const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 
-const postRepository = RepositoryFactory.getPostRepository();
-console.log(`Using ${process.env.REPO_TYPE || 'memory'} repository for posts`);
+const postRepository = PostRepositoryFactory.getPostRepository();
+console.log(`Using ${process.env.REPO_TYPE || 'memory'} post repository for posts`);
+
+const userRepository = UserRepositoryFactory.getPostRepository();
+console.log(`Using ${process.env.REPO_TYPE || 'memory'} user repository for posts`);
 
 const postRoutes = require('./api/post/postRoutes');
 app.use('/post', postRoutes);
+
+const userRoutes = require('./api/user/userRoutes');
+app.use('/user', userRoutes);
 
 app.get('/', (req, res) => res.send('Xistter API is running'));
 
