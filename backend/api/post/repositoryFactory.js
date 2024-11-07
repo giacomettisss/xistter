@@ -1,6 +1,6 @@
 const postInMemoryRepository = require('./postInMemoryRepository');
 const postSQLiteRepository = require('./postSQLiteRepository');
-const postPostgreSQLRepository = require('./postPostgreSQLRepository');
+const postMySQLRepository = require('./postMySQLRepository');
 
 class RepositoryFactory {
   static getPostRepository() {
@@ -8,10 +8,13 @@ class RepositoryFactory {
 
     switch (repoType) {
       case 'sqlite':
+        console.log('PostRepository using SQLite')
         return postSQLiteRepository;
-      case 'postgresql':
-        return postPostgreSQLRepository;
+      case 'mysql':
+        console.log('PostRepository using MySQL')
+        return postMySQLRepository;
       default:
+        console.log('PostRepository using Memory')
         return postInMemoryRepository;
     }
   }

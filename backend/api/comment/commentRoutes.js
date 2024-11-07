@@ -4,7 +4,7 @@ const commentController = require('./commentController');
 
 router.post('/', commentController.addComment);
 
-router.get('/:postId', commentController.getAllCommentsByPostId);
+router.get('/post/:postId', commentController.getAllCommentsByPostId);
 
 router.get('/:commentId', commentController.getCommentById);
 

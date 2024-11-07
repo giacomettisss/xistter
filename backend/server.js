@@ -15,10 +15,10 @@ const postRepository = PostRepositoryFactory.getPostRepository();
 console.log(`Using ${process.env.REPO_TYPE || 'memory'} post repository for posts`);
 
 const userRepository = UserRepositoryFactory.getPostRepository();
-console.log(`Using ${process.env.REPO_TYPE || 'memory'} user repository for posts`);
+console.log(`Using ${process.env.REPO_TYPE || 'memory'} user repository for users`);
 
 const commentRepository = CommentRepositoryFactory.getCommentRepository();
-console.log(`Using ${process.env.REPO_TYPE || 'memory'} comment repository for posts`);
+console.log(`Using ${process.env.REPO_TYPE || 'memory'} comment repository for comments`);
 
 const postRoutes = require('./api/post/postRoutes');
 app.use('/post', postRoutes);
