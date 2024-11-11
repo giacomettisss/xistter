@@ -29,7 +29,7 @@ body {
 
 h2 {
   margin-bottom: 1.5rem;
-  color: #333;
+  color: #333; /* Cor ajustada para o tema claro */
 }
 
 label {
@@ -113,6 +113,10 @@ button[type="submit"]:hover {
   color: #e1e1e1;
 }
 
+.dark-theme h2 {
+  color: #e1e1e1; /* Cor ajustada para o tema escuro */
+}
+
 .dark-theme label {
   color: #c7c7c7;
 }
@@ -138,9 +142,4 @@ button[type="submit"]:hover {
 
 .dark-theme .links a:hover {
   color: #1d6dc9;
-}
-
-h2 {
-  margin-bottom: 1.5rem;
-  color: #ffffff; /* Cor branca mais intensa para melhorar o contraste */
 }
