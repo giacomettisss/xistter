@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f2f5;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Tema claro */
+.login-container {
+  background-color: #fff;
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+label {
+  display: block;
+  margin-top: 1rem;
+  color: #666;
+}
+
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 1.5rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.links {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.links a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.links a:hover {
+  color: #0056b3;
+}
+
+/* Estilo para o botão de alternar tema */
+.theme-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.theme-toggle button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.theme-toggle button:hover {
+  background-color: #0056b3;
+}
+
+/* Tema escuro */
+.dark-theme {
+  background-color: #181a1b;
+  color: #e1e1e1;
+}
+
+.dark-theme .login-container {
+  background-color: #242526;
+  color: #e1e1e1;
+}
+
+.dark-theme label {
+  color: #c7c7c7;
+}
+
+.dark-theme input[type="email"],
+.dark-theme input[type="password"] {
+  background-color: #3a3b3c;
+  color: #e1e1e1;
+  border: 1px solid #555;
+}
+
+.dark-theme button[type="submit"] {
+  background-color: #3a8ef0;
+}
+
+.dark-theme button[type="submit"]:hover {
+  background-color: #1d6dc9;
+}
+
+.dark-theme .links a {
+  color: #3a8ef0;
+}
+
+.dark-theme .links a:hover {
+  color: #1d6dc9;
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+  color: #ffffff; /* Cor branca mais intensa para melhorar o contraste */
+}
