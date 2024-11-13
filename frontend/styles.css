@@ -16,7 +16,7 @@ body {
 }
 
 /* Tema claro */
-.login-container {
+.login-container, .register-container {
   background-color: #fff;
   padding: 2rem;
   width: 100%;
@@ -29,7 +29,7 @@ body {
 
 h2 {
   margin-bottom: 1.5rem;
-  color: #333; /* Cor ajustada para o tema claro */
+  color: #333;
 }
 
 label {
@@ -38,6 +38,7 @@ label {
   color: #666;
 }
 
+input[type="text"],
 input[type="email"],
 input[type="password"] {
   width: 100%;
@@ -67,7 +68,8 @@ button[type="submit"]:hover {
 .links {
   margin-top: 1rem;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
   font-size: 0.9rem;
 }
 
@@ -108,19 +110,21 @@ button[type="submit"]:hover {
   color: #e1e1e1;
 }
 
-.dark-theme .login-container {
+.dark-theme .login-container,
+.dark-theme .register-container {
   background-color: #242526;
   color: #e1e1e1;
 }
 
 .dark-theme h2 {
-  color: #e1e1e1; /* Cor ajustada para o tema escuro */
+  color: #e1e1e1;
 }
 
 .dark-theme label {
   color: #c7c7c7;
 }
 
+.dark-theme input[type="text"],
 .dark-theme input[type="email"],
 .dark-theme input[type="password"] {
   background-color: #3a3b3c;
@@ -142,4 +146,20 @@ button[type="submit"]:hover {
 
 .dark-theme .links a:hover {
   color: #1d6dc9;
+}
+
+.forgot-password-container {
+  background-color: #fff;
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dark-theme .forgot-password-container {
+  background-color: #242526;
+  color: #e1e1e1;
 }
