@@ -14,11 +14,14 @@ app.use(express.json());
 const postRepository = PostRepositoryFactory.getPostRepository();
 console.log(`Using ${process.env.REPO_TYPE || 'memory'} post repository for posts`);
 
-const userRepository = UserRepositoryFactory.getPostRepository();
+const userRepository = UserRepositoryFactory.getUserRepository();
 console.log(`Using ${process.env.REPO_TYPE || 'memory'} user repository for users`);
 
 const commentRepository = CommentRepositoryFactory.getCommentRepository();
 console.log(`Using ${process.env.REPO_TYPE || 'memory'} comment repository for comments`);
+
+const authRoutes = require('./api/auth/authRoutes');
+app.use('/auth', authRoutes);
 
 const postRoutes = require('./api/post/postRoutes');
 app.use('/post', postRoutes);

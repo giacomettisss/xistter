@@ -1,33 +1,24 @@
 const db = require('../../config/db');
 
-function createUsersTable() {
-  db.run(`
-    CREATE TABLE IF NOT EXISTS users (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      username TEXT NOT NULL,
-      password TEXT NOT NULL,
-      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    )
-  `, (err) => {
-    if (err) {
-      console.error('Error creating users table:', err.message);
-    } else {
-      console.log('Users table created successfully');
-    }
-  });
-}
-
-function initializeDatabase() {
-  if (process.env.REPO_TYPE === 'sqlite') {
-    db.serialize(() => {
-      createPostsTable();
-      createUsersTable();
-    });
-  } else {
-    console.log('Skipping table creation: REPO_TYPE is not set to sqlite.');
+async function createUserTable() {
+  try {
+    await db.query(`
+      CREATE TABLE users (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        username VARCHAR(50) NOT NULL UNIQUE,
+        email VARCHAR(100) NOT NULL UNIQUE,
+        password VARCHAR(255) NOT NULL,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+      );
+    `);
+    console.log('Posts table created successfully');
+  } catch (err) {
+    console.error('Error creating posts table:', err.message);
   }
 }
 
-initializeDatabase();
+async function createUserTables() {
+  await createUserTable();
+}
 
-module.exports = db;
+module.exports = { createUserTables };

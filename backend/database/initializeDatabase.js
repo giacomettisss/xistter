@@ -1,13 +1,21 @@
 const db = require('../config/db');
 const { createPostTables } = require('./tables/postTables');
-const { initializeProcedures } = require('./procedures/postProcedures');
+const { createCommentTables } = require('./tables/commentTables');
+const { createUserTables } = require('./tables/userTables');
+const { initializeProcedures: initializePostProcedures } = require('./procedures/postProcedures');
+const { initializeProcedures: initializeCommentProcedures } = require('./procedures/commentProcedures');
+const { initializeProcedures: initializeUserProcedures } = require('./procedures/userProcedures');
 
 async function initializeDatabase() {
   if (process.env.REPO_TYPE === 'mysql') {
     console.log('Connected to MySQL. Creating tables and procedures...');
 
     await createPostTables();
-    await initializeProcedures();
+    await createCommentTables();
+    await createUserTables();
+    await initializePostProcedures(db);
+    await initializeCommentProcedures(db);
+    await initializeUserProcedures(db);
 
     console.log('All tables and procedures created successfully');
   } else {

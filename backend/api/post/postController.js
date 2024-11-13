@@ -29,7 +29,7 @@ const getAllPosts = async (req, res) => {
   } catch (error) {
     console.error('Error in getAllPosts:', error);
     res.status(500).json({ error: 'Error fetching posts' });
-  }
+  } 
 };
 
 const getPostById = async (req, res) => {

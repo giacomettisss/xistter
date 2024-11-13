@@ -9,9 +9,9 @@ async function createAddPostProcedure() {
         SELECT LAST_INSERT_ID() AS postId;
       END
     `);
-    console.log('add_post procedure created successfully');
+    console.log('[postProdecures.js] add_post procedure created successfully');
   } catch (err) {
-    console.error('Error creating add_post procedure:', err.message);
+    console.error('[postProdecures.js] Error creating add_post procedure:', err.message);
   }
 }
 
@@ -23,9 +23,9 @@ async function createGetPostProcedure() {
         SELECT * FROM posts WHERE id = post_id;
       END
     `);
-    console.log('get_post procedure created successfully');
+    console.log('[postProdecures.js] get_post procedure created successfully');
   } catch (err) {
-    console.error('Error creating get_post procedure:', err.message);
+    console.error('[postProdecures.js] Error creating get_post procedure:', err.message);
   }
 }
 
@@ -37,9 +37,9 @@ async function createGetPostsProcedure() {
         SELECT * FROM posts;
       END
     `);
-    console.log('get_posts procedure created successfully');
+    console.log('[postProdecures.js] get_posts procedure created successfully');
   } catch (err) {
-    console.error('Error creating get_posts procedure:', err.message);
+    console.error('[postProdecures.js] Error creating get_posts procedure:', err.message);
   }
 }
 
@@ -51,22 +51,22 @@ async function createDeletePostProcedure() {
         DELETE FROM posts WHERE id = post_id;
       END
     `);
-    console.log('delete_post procedure created successfully');
+    console.log('[postProdecures.js] delete_post procedure created successfully');
   } catch (err) {
-    console.error('Error creating delete_post procedure:', err.message);
+    console.error('[postProdecures.js] Error creating delete_post procedure:', err.message);
   }
 }
 
 async function initializeProcedures() {
   if (process.env.REPO_TYPE === 'mysql') {
-    console.log('Creating stored procedures...');
+    console.log('[postProdecures.js] Creating stored procedures...');
     await createAddPostProcedure();
     await createGetPostProcedure();
     await createGetPostsProcedure();
     await createDeletePostProcedure();
-    console.log('All procedures created successfully');
+    console.log('[postProdecures.js] All procedures created successfully');
   } else {
-    console.log('Skipping procedure creation: REPO_TYPE is not set to mysql.');
+    console.log('[postProdecures.js] Skipping procedure creation: REPO_TYPE is not set to mysql.');
   }
 }
 

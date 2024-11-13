@@ -14,10 +14,10 @@ class UserInMemoryRepository {
   async add(user) {
     const newUser = {
       id: uuidv4(),
-      usuario: user.usuario,
+      user: user.user,
       email: user.email,
-      senha: user.senha,
-      dataCriacao: new Date().toISOString(),
+      password: user.senha,
+      created_at: new Date().toISOString(),
     };
     users.push(newUser);
     return newUser;
