@@ -5,17 +5,18 @@
   font-family: Arial, sans-serif;
 }
 
+/* Centraliza o conteúdo na tela */
 body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; /* Centraliza o conteúdo verticalmente */
+  align-items: center; /* Centraliza o conteúdo horizontalmente */
   min-height: 100vh;
   background-color: #f0f2f5;
   transition: background-color 0.3s, color 0.3s;
 }
 
-/* Tema claro */
+/* Container de login e registro */
 .login-container, .register-container {
   background-color: #fff;
   padding: 2rem;
