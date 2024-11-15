@@ -3,6 +3,9 @@ const dotenv = require('dotenv');
 const PostRepositoryFactory = require('./api/post/repositoryFactory');
 const UserRepositoryFactory = require('./api/user/repositoryFactory');
 const CommentRepositoryFactory = require('./api/comment/repositoryFactory');
+const followerRepositoryFactory = require('./api/follower/repositoryFactory');
+const likeRepositoryFactory = require('./api/like/repositoryFactory');
+const feedRepositoryFactory = require('./api/feed/repositoryFactory');
 
 dotenv.config();
 
@@ -20,6 +23,15 @@ console.log(`Using ${process.env.REPO_TYPE || 'memory'} user repository for user
 const commentRepository = CommentRepositoryFactory.getCommentRepository();
 console.log(`Using ${process.env.REPO_TYPE || 'memory'} comment repository for comments`);
 
+const followerRepository = followerRepositoryFactory.getFollowerRepository();
+console.log(`Using ${process.env.REPO_TYPE || 'memory'} comment repository for comments`);
+
+const likeRepository = likeRepositoryFactory.getLikeRepository();
+console.log(`Using ${process.env.REPO_TYPE || 'memory'} comment repository for comments`);
+
+const feedRepository = feedRepositoryFactory.getFeedRepository();
+console.log(`Using ${process.env.REPO_TYPE || 'memory'} comment repository for comments`);
+
 const authRoutes = require('./api/auth/authRoutes');
 app.use('/auth', authRoutes);
 
@@ -31,6 +43,15 @@ app.use('/user', userRoutes);
 
 const commentRoutes = require('./api/comment/commentRoutes');
 app.use('/comment', commentRoutes);
+
+const followerRoutes = require('./api/follower/followerRoutes');
+app.use('/follower', followerRoutes);
+
+const likeRoutes = require('./api/like/likeRoutes');
+app.use('/like', likeRoutes);
+
+const feedRoutes = require('./api/feed/feedRoutes');
+app.use('/feed', feedRoutes);
 
 app.get('/', (req, res) => res.send('Xistter API is running'));
 

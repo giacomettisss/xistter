@@ -1,29 +1,33 @@
 const db = require('../config/db');
 const { createPostTables } = require('./tables/postTables');
-const { createCommentTables } = require('./tables/commentTables');
 const { createUserTables } = require('./tables/userTables');
-const { initializeProcedures: initializePostProcedures } = require('./procedures/postProcedures');
-const { initializeProcedures: initializeCommentProcedures } = require('./procedures/commentProcedures');
-const { initializeProcedures: initializeUserProcedures } = require('./procedures/userProcedures');
+const { createFollowerTables } = require('./tables/followerTables');
+const { createLikeTables } = require('./tables/likeTables');
+const { createPostProcedures } = require('./procedures/postProcedures');
+const { createUserProcedures } = require('./procedures/userProcedures');
+const { createFollowerProcedures } = require('./procedures/followerProcedures');
+const { createLikeProcedures } = require('./procedures/likeProcedures');
 
 async function initializeDatabase() {
   if (process.env.REPO_TYPE === 'mysql') {
-    console.log('Connected to MySQL. Creating tables and procedures...');
+    console.log('[initializeDatabase.js] Connected to MySQL. Creating tables and procedures...');
 
     await createPostTables();
-    await createCommentTables();
     await createUserTables();
-    await initializePostProcedures(db);
-    await initializeCommentProcedures(db);
-    await initializeUserProcedures(db);
+    await createFollowerTables();
+    await createLikeTables();
+    await createPostProcedures(db);
+    await createUserProcedures(db);
+    await createFollowerProcedures(db);
+    await createLikeProcedures(db);
 
-    console.log('All tables and procedures created successfully');
+    console.log('[initializeDatabase.js] All tables and procedures created successfully');
   } else {
-    console.log('Skipping database initialization: REPO_TYPE is not set to mysql.');
+    console.log('[initializeDatabase.js] Skipping database initialization: REPO_TYPE is not set to mysql.');
   }
 }
 
 initializeDatabase().catch(err => {
-  console.error('Error initializing database:', err);
+  console.error('[initializeDatabase.js] Error initializing database:', err);
 });
 module.exports = db;
