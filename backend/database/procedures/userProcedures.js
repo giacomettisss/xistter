@@ -86,7 +86,7 @@ async function createUpdateUserProcedure() {
   }
 }
 
-async function initializeProcedures() {
+async function createUserProcedures() {
   if (process.env.REPO_TYPE === 'mysql') {
     console.log('[userProdecures.js] Creating user stored procedures...');
     await createAddUserProcedure();
@@ -101,4 +101,4 @@ async function initializeProcedures() {
   }
 }
 
-module.exports = { initializeProcedures };
+module.exports = { createUserProcedures };

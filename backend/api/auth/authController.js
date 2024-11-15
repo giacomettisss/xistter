@@ -9,6 +9,7 @@ class AuthController {
   async login(req, res) {
     const { email, password } = req.body;
     console.log('[authController.js] login requested:', req.body)
+    
     if (!email || !password) {
       return res.status(400).json({ message: 'Email and password are required' });
     }
@@ -27,7 +28,8 @@ class AuthController {
   }
 
   async refreshToken(req, res) {
-    const { token } = req.body;
+    const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
     if (!token) {
       return res.status(400).json({ message: 'Token is required' });
     }

@@ -19,22 +19,22 @@ if (process.env.REPO_TYPE === 'mysql') {
 
   db.getConnection()
     .then(() => {
-      console.log('Connected to the MySQL database');
+      console.log('[db.js] Connected to the MySQL database');
     })
     .catch(err => {
-      console.error('Error connecting to the MySQL database:', err.message);
+      console.error('[db.js] Error connecting to the MySQL database:', err.message);
     });
 
 } else if (process.env.REPO_TYPE === 'sqlite') {
   db = new sqlite3.Database(path.resolve(__dirname, '../db/xistter.db'), (err) => {
     if (err) {
-      console.error('Error opening SQLite database:', err.message);
+      console.error('[db.js] Error opening SQLite database:', err.message);
     } else {
-      console.log('Connected to the SQLite database');
+      console.log('[db.js] Connected to the SQLite database');
     }
   });
 } else {
-  console.error('No valid REPO_TYPE set in environment variables.');
+  console.error('[db.js] No valid REPO_TYPE set in environment variables.');
 }
 
 module.exports = db;
