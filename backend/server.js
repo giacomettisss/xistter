@@ -42,7 +42,8 @@ const authRoutes = require('./api/auth/authRoutes');
 app.use('/api/auth', authRoutes);
 
 const postRoutes = require('./api/post/postRoutes');
-app.use('/api/post', authMiddleware, postRoutes);
+// app.use('/api/post', authMiddleware, postRoutes);
+app.use('/api/post', postRoutes);
 
 const userRoutes = require('./api/user/userRoutes');
 app.use('/api/user', userRoutes);
@@ -70,6 +71,10 @@ app.get('/register', (req, res) => {
 
 app.get('/feed', authMiddleware, (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'frontend', 'feed', 'feed.html'));
+});
+
+app.get('/profile/:username', authMiddleware, (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'frontend', 'profile', 'profile.html'));
 });
 
 app.listen(PORT, '0.0.0.0', () => {

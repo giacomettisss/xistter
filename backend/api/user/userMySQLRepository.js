@@ -12,6 +12,11 @@ class UserMySQLRepository {
     return rows[0] || null;
   }
 
+  async getUserByUsername(username) {
+    const [rows] = await pool.query('CALL get_user_by_username(?);', [username]);
+    return rows[0] || null;
+  }
+
   async getUserByEmail(email) {
     const [rows] = await pool.query('CALL get_user_by_email(?);', [email]);
     return rows[0] || null;

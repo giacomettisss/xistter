@@ -81,7 +81,7 @@ async function createGetUserPostsProcedure() {
     await db.query(`
       CREATE PROCEDURE get_user_posts(IN p_user_id INT, IN p_offset INT, IN p_limit INT)
       BEGIN
-        SELECT posts.*, users.username, users.profile_picture
+        SELECT posts.*, users.username, users.profile_picture, users.email
         FROM posts
         JOIN users ON posts.user_id = users.id
         WHERE posts.user_id = p_user_id
