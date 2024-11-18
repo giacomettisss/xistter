@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feed do X</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+        <header class="header">
+            <div class="fixed_container">
+            <!-- <img src="logo-x.png" alt="Logo X" class="logo"> -->
+            <img src="https://cdn-icons-png.flaticon.com/512/3541/3541871.png" alt="Perfil" class="perfil" style="max-height: 30px;">
+             <div>
+                <h3>Xistter</h3>
+            </div>
+             <img src="https://cdn-icons-png.flaticon.com/512/10238/10238180.png" alt="" style="max-height: 30px;">
+            </div>
+        </header>
+
+    <div class="container">
+        <!-- Navegação por Abas -->
+        <nav class="tabs">
+            <ul>
+                <li class="tab active" data-tab="for-you">Posts</li>
+                <li class="tab" data-tab="following">Re-posts</li>
+                <li class="tab" data-tab="subscribed">Comments</li>
+            </ul>
+        </nav>
+        <section class="profile-header">
+            <div class="profile-banner">
+                <!-- Opcional: Imagem de banner -->
+            </div>
+            <div class="profile-info">
+                <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Foto do Perfil" class="profile-photo">
+                <div class="profile-name-handle">
+                    <h2 class="profile-name">Nome do Usuário</h2>
+                    <p class="profile-handle">@username</p>
+                </div>
+                <button id="followButton" class="follow-button">Seguir</button>
+                <div class="profile-stats">
+                    <span><strong id="followingCount">0</strong> Seguindo</span>
+                    <span><strong id="followersCount">0</strong> Seguidores</span>
+                </div>
+            </div>
+            <p class="profile-bio">Bio do usuário...</p>
+        </section>
+        
+        
+        
+        <!-- Feed de Posts -->
+        <main class="feed">
+
+        </main>
+    </div>
+
+        <!-- Botão de Ação Flutuante -->
+        <button class="fab">
+            <i class="fas fa-plus"></i>
+        </button>
+
+        <!-- Barra de Navegação Inferior -->
+        <footer class="navbar">
+            <div class="fixed_footer_navbar">
+                <a href="#" class="nav-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-search"></i>
+                    <span>Busca</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-bell"></i>
+                    <span>Notificações</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Mensagens</span>
+                </a>
+            </div>
+        </footer>
+
+    <!-- Modal -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <form id="postForm">
+            <textarea id="postContent" placeholder="O que está acontecendo?" rows="5" required></textarea>
+            <button type="submit">Publicar</button>
+        </form>
+    </div>
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>

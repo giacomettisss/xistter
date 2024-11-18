@@ -1,8 +1,14 @@
 const RepositoryFactory = require('./repositoryFactory');
 const postRepository = RepositoryFactory.getPostRepository();
 
+const UserRepositoryFactory = require('../user/repositoryFactory');
+const userRepository = UserRepositoryFactory.getUserRepository();
+
 const addPost = async (req, res) => {
-  const { userId, content } = req.body;
+  console.log('[postController.js] - Running addPost')
+  const { content } = req.body;
+  const userId = req.userId
+  console.log('[postController.js] - userId', userId)
 
   if (!userId || !content) {
     return res.status(400).json({ error: 'User ID and content are required' });
@@ -16,6 +22,7 @@ const addPost = async (req, res) => {
     }
 
     res.json({ message: 'Post added successfully', postId });
+    console.log('[postController.js] - Passed Successfully')
   } catch (error) {
     console.error('Error in addPost:', error);
     res.status(500).json({ error: 'Error adding post' });
@@ -143,10 +150,11 @@ const getUserPosts = async (req, res) => {
 
   try {
     // Obter o ID do usuário a partir do username
-    const user = await userRepository.getUserByUsername(username);
+    const [user] = await userRepository.getUserByUsername(username);
+    console.log('[postController.js] - user', user)
 
     if (!user) {
-      return res.status(404).json({ error: 'User not found' });
+      return res.status(404).json({ error: 'User not found >.<' });
     }
 
     const posts = await postRepository.getUserPosts(user.id, offset, limit);

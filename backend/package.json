@@ -18,8 +18,12 @@
   },
   "homepage": "https://github.com/giacomettisss/xistter#readme",
   "dependencies": {
+    "cookie-parser": "^1.4.7",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
+    "install": "^0.13.0",
+    "jsonwebtoken": "^9.0.2",
+    "npm": "^10.9.0",
     "pg": "^8.13.1",
     "sqlite3": "^5.1.7"
   },
