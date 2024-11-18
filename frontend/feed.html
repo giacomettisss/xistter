@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feed - Xistter</title>
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Estilo geral */
+    body {
+      background-color: #f0f2f5;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* Header fixo */
+    .feed-header {
+      width: 100%;
+      padding: 1rem;
+      background-color: #007bff;
+      color: white;
+      text-align: center;
+      font-size: 1.5rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+    }
+
+    /* Espaço para compensar o header fixo */
+    .feed-wrapper {
+      margin-top: 60px; /* Espaço para o header fixo */
+      width: 100%;
+      display: flex;
+      justify-content: center; /* Centraliza horizontalmente */
+    }
+
+    /* Container do Feed */
+    .feed-container {
+      width: 100%;
+      max-width: 600px;
+      background-color: #fff;
+      padding: 1.5rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* Criar Postagem */
+    .create-post {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .create-post textarea {
+      flex-grow: 1;
+      padding: 0.8rem;
+      border: 1px solid #ccc;
+      resize: none;
+      font-size: 1rem;
+    }
+
+    .create-post button {
+      padding: 0.8rem 1.5rem;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .create-post button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Postagem */
+    .post {
+      padding: 1rem 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .post:last-child {
+      border-bottom: none;
+    }
+
+    .post-header {
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    .post-username {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 0.5rem;
+    }
+
+    .post-time {
+      font-size: 0.8rem;
+      color: #aaa;
+      margin-bottom: 0.5rem;
+    }
+
+    .post-content {
+      font-size: 1rem;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    .post-actions {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .post-actions button {
+      padding: 0.5rem 1rem;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background-color 0.3s;
+    }
+
+    .post-actions button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Botão de troca de tema */
+    .theme-toggle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 200; /* Garante que fica acima de outros elementos */
+    }
+
+    .theme-toggle button {
+      padding: 0.5rem 1rem;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .theme-toggle button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Tema Escuro */
+    .dark-theme {
+      background-color: #181a1b;
+      color: #e1e1e1;
+    }
+
+    .dark-theme .feed-header {
+      background-color: #1E88E5;
+    }
+
+    .dark-theme .feed-container {
+      background-color: #242526;
+      color: #e1e1e1;
+    }
+
+    .dark-theme .create-post textarea {
+      background-color: #3a3b3c;
+      color: #e1e1e1;
+      border: 1px solid #555;
+    }
+
+    .dark-theme .create-post button {
+      background-color: #3a8ef0;
+    }
+
+    .dark-theme .create-post button:hover {
+      background-color: #1d6dc9;
+    }
+
+    .dark-theme .post-content {
+      color: #e1e1e1;
+    }
+
+    .dark-theme .post-actions button {
+      background-color: #3a8ef0;
+    }
+
+    .dark-theme .post-actions button:hover {
+      background-color: #1d6dc9;
+    }
+  </style>
+</head>
+<body>
+  <header class="feed-header">Xistter - Feed</header>
+  
+  <!-- Botão de troca de tema -->
+  <div class="theme-toggle">
+    <button onclick="toggleTheme()">Alternar Tema</button>
+  </div>
+
+  <div class="feed-wrapper">
+    <div class="feed-container">
+      <!-- Criar Postagem -->
+      <div class="create-post">
+        <textarea placeholder="O que está acontecendo?"></textarea>
+        <button>Xisttar</button>
+      </div>
+      <!-- Postagens de Exemplo -->
+      <div class="post">
+        <div class="post-header">Usuário</div>
+        <div class="post-username">@usuario</div>
+        <div class="post-time">Há 1 hora</div>
+        <div class="post-content">Este é o conteúdo do post.</div>
+        <div class="post-actions">
+          <button>Curtir</button>
+        </div>
+      </div>
+      <div class="post">
+        <div class="post-header">Outro Usuário</div>
+        <div class="post-username">@outroUsuario</div>
+        <div class="post-time">Há 2 horas</div>
+        <div class="post-content">Aqui está mais um post no feed.</div>
+        <div class="post-actions">
+          <button>Curtir</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('dark-theme');
+    }
+  </script>
+</body>
+</html>
