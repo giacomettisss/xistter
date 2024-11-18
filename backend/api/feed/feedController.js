@@ -2,7 +2,9 @@ const RepositoryFactory = require('./repositoryFactory');
 const feedRepository = RepositoryFactory.getFeedRepository();
 
 const getFeed = async (req, res) => {
-  const { userId } = req.params;
+  // const { userId } = req.params;
+  const userId = req.userId;
+  console.log('[feedController.js] userId', userId)
   let { page, limit } = req.query;
 
   if (!userId) {

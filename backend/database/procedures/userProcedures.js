@@ -3,10 +3,14 @@ const db = require('../../config/db');
 async function createAddUserProcedure() {
   try {
     await db.query(`
-      CREATE PROCEDURE add_user(IN username VARCHAR(50), IN email VARCHAR(100), IN password VARCHAR(255))
+      CREATE PROCEDURE add_user(
+        IN p_username VARCHAR(50),
+        IN p_email VARCHAR(100),
+        IN p_password VARCHAR(255)
+      )
       BEGIN
-        INSERT INTO users (username, email, password, created_at) 
-        VALUES (username, email, password, NOW());
+        INSERT INTO users (username, email, password, created_at)
+        VALUES (p_username, p_email, p_password, NOW());
         SELECT LAST_INSERT_ID() AS userId;
       END
     `);
@@ -19,9 +23,21 @@ async function createAddUserProcedure() {
 async function createGetUserProcedure() {
   try {
     await db.query(`
-      CREATE PROCEDURE get_user(IN user_id INT)
+      CREATE PROCEDURE get_user(IN p_user_id INT)
       BEGIN
-        SELECT id, username, email, created_at FROM users WHERE id = user_id;
+        SELECT
+          id,
+          username,
+          email,
+          name,
+          bio,
+          location,
+          website,
+          profile_picture,
+          cover_photo,
+          created_at
+        FROM users
+        WHERE id = p_user_id;
       END
     `);
     console.log('[userProdecures.js] get_user procedure created successfully');
@@ -41,6 +57,32 @@ async function createGetUserByEmailProcedure() {
     console.log('[userProdecures.js] get_user_by_email procedure created successfully');
   } catch (err) {
     console.error('[userProdecures.js] Error creating get_user_by_email procedure:', err.message);
+  }
+}
+
+async function createGetUserByUsernameProcedure() {
+  try {
+    await db.query(`
+      CREATE PROCEDURE get_user_by_username(IN p_username VARCHAR(50))
+      BEGIN
+        SELECT
+          id,
+          username,
+          email,
+          name,
+          bio,
+          location,
+          website,
+          profile_picture,
+          cover_photo,
+          created_at
+        FROM users
+        WHERE username = p_username;
+      END
+    `);
+    console.log('[userProdecures.js] get_user_by_username procedure created successfully');
+  } catch (err) {
+    console.error('[userProdecures.js] Error creating get_user_by_username procedure:', err.message);
   }
 }
 
@@ -75,9 +117,24 @@ async function createDeleteUserProcedure() {
 async function createUpdateUserProcedure() {
   try {
     await db.query(`
-      CREATE PROCEDURE update_user_password(IN user_id INT, IN new_password VARCHAR(255))
+      CREATE PROCEDURE update_profile(
+        IN p_user_id INT,
+        IN p_name VARCHAR(100),
+        IN p_bio TEXT,
+        IN p_location VARCHAR(100),
+        IN p_website VARCHAR(100),
+        IN p_profile_picture VARCHAR(255),
+        IN p_cover_photo VARCHAR(255)
+      )
       BEGIN
-        UPDATE users SET password = new_password WHERE id = user_id;
+        UPDATE users SET
+          name = p_name,
+          bio = p_bio,
+          location = p_location,
+          website = p_website,
+          profile_picture = p_profile_picture,
+          cover_photo = p_cover_photo
+        WHERE id = p_user_id;
       END
     `);
     console.log('[userProdecures.js] update_user_password procedure created successfully');
@@ -92,6 +149,7 @@ async function createUserProcedures() {
     await createAddUserProcedure();
     await createGetUserProcedure();
     await createGetUserByEmailProcedure();
+    await createGetUserByUsernameProcedure();
     await createGetUsersProcedure();
     await createDeleteUserProcedure();
     await createUpdateUserProcedure();

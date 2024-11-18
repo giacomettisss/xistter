@@ -7,6 +7,7 @@ const { createPostProcedures } = require('./procedures/postProcedures');
 const { createUserProcedures } = require('./procedures/userProcedures');
 const { createFollowerProcedures } = require('./procedures/followerProcedures');
 const { createLikeProcedures } = require('./procedures/likeProcedures');
+const { createFeedProcedures } = require('./procedures/feedProcedures');
 
 async function initializeDatabase() {
   if (process.env.REPO_TYPE === 'mysql') {
@@ -20,6 +21,7 @@ async function initializeDatabase() {
     await createUserProcedures(db);
     await createFollowerProcedures(db);
     await createLikeProcedures(db);
+    await createFeedProcedures(db);
 
     console.log('[initializeDatabase.js] All tables and procedures created successfully');
   } else {

@@ -34,3 +34,7 @@ class UserMySQLRepository {
 }
 
 module.exports = new UserMySQLRepository();
+
+
+// const postContentInput = document.getElementById("postContent");
+// postContentInput.focus();
