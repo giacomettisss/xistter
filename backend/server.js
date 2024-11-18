@@ -21,20 +21,20 @@ app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, '..', 'frontend')));
 
-const postRepository = PostRepositoryFactory.getPostRepository();
-console.log(`Using ${process.env.REPO_TYPE || 'memory'} post repository for posts`);
+// const postRepository = PostRepositoryFactory.getPostRepository();
+// console.log(`Using ${process.env.REPO_TYPE || 'memory'} post repository for posts`);
 
-const userRepository = UserRepositoryFactory.getUserRepository();
-console.log(`Using ${process.env.REPO_TYPE || 'memory'} user repository for users`);
+// const userRepository = UserRepositoryFactory.getUserRepository();
+// console.log(`Using ${process.env.REPO_TYPE || 'memory'} user repository for users`);
 
-const followerRepository = followerRepositoryFactory.getFollowerRepository();
-console.log(`Using ${process.env.REPO_TYPE || 'memory'} follower repository for follower`);
+// const followerRepository = followerRepositoryFactory.getFollowerRepository();
+// console.log(`Using ${process.env.REPO_TYPE || 'memory'} follower repository for follower`);
 
-const likeRepository = likeRepositoryFactory.getLikeRepository();
-console.log(`Using ${process.env.REPO_TYPE || 'memory'} likes repository for likes`);
+// const likeRepository = likeRepositoryFactory.getLikeRepository();
+// console.log(`Using ${process.env.REPO_TYPE || 'memory'} likes repository for likes`);
 
-const feedRepository = feedRepositoryFactory.getFeedRepository();
-console.log(`Using ${process.env.REPO_TYPE || 'memory'} feed repository for feed`);
+// const feedRepository = feedRepositoryFactory.getFeedRepository();
+// console.log(`Using ${process.env.REPO_TYPE || 'memory'} feed repository for feed`);
 
 /* API Routes */
 
@@ -42,17 +42,16 @@ const authRoutes = require('./api/auth/authRoutes');
 app.use('/api/auth', authRoutes);
 
 const postRoutes = require('./api/post/postRoutes');
-// app.use('/api/post', authMiddleware, postRoutes);
-app.use('/api/post', postRoutes);
+app.use('/api/post', authMiddleware, postRoutes);
 
 const userRoutes = require('./api/user/userRoutes');
-app.use('/api/user', userRoutes);
+app.use('/api/user', authMiddleware, userRoutes);
 
 const followerRoutes = require('./api/follower/followerRoutes');
-app.use('/api/follower', followerRoutes);
+app.use('/api/follower', authMiddleware, followerRoutes);
 
 const likeRoutes = require('./api/like/likeRoutes');
-app.use('/api/like', likeRoutes);
+app.use('/api/like', authMiddleware, likeRoutes);
 
 const feedRoutes = require('./api/feed/feedRoutes');
 app.use('/api/feed', authMiddleware, feedRoutes);

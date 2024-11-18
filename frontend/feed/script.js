@@ -19,7 +19,7 @@ tabs.forEach(tab => {
 function filterPosts(tab) {
     // Aqui você pode implementar a lógica para filtrar os posts
     // Por enquanto, vamos apenas exibir um alerta
-    alert(`Aba selecionada: ${tab}`);
+    // alert(`Aba selecionada: ${tab}`);
 }
 
 // Botão de Ação Flutuante
@@ -119,83 +119,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    // // Função para adicionar o post ao feed (simulação)
-    // function addPostToFeed(content) {
-    //     const feed = document.querySelector(".feed");
-
-    //     // Cria os elementos do novo post
-    //     const post = document.createElement("div");
-    //     post.className = "post";
-
-    //     const postHeader = document.createElement("div");
-    //     postHeader.className = "post-header";
-
-    //     const img = document.createElement("img");
-    //     img.src = "https://cdn-icons-png.flaticon.com/512/847/847969.png";
-    //     img.alt = "User";
-    //     img.className = "post-perfil";
-    //     img.style.maxWidth = "38px";
-    //     img.style.maxHeight = "38px";
-
-    //     const postInfo = document.createElement("div");
-    //     postInfo.className = "post-info";
-
-    //     const nomeUsuario = document.createElement("span");
-    //     nomeUsuario.className = "nome-usuario";
-    //     nomeUsuario.textContent = "Seu Nome"; // Substitua pelo nome do usuário
-
-    //     const handle = document.createElement("span");
-    //     handle.className = "handle";
-    //     handle.textContent = "@seu_handle · agora"; // Substitua pelo handle do usuário
-
-    //     postInfo.appendChild(nomeUsuario);
-    //     postInfo.appendChild(handle);
-
-    //     postHeader.appendChild(img);
-    //     postHeader.appendChild(postInfo);
-
-    //     const postConteudo = document.createElement("div");
-    //     postConteudo.className = "post-conteudo";
-    //     postConteudo.textContent = content;
-
-    //     const postInteracoes = document.createElement("div");
-    //     postInteracoes.className = "post-interacoes";
-    //     postInteracoes.innerHTML = `
-    //         <div class="interacao">
-    //             <i class="fas fa-comment"></i>
-    //             <span>0</span>
-    //         </div>
-    //         <div class="interacao">
-    //             <i class="fas fa-retweet"></i>
-    //             <span>0</span>
-    //         </div>
-    //         <div class="interacao">
-    //             <i class="fas fa-heart"></i>
-    //             <span>0</span>
-    //         </div>
-    //         <div class="interacao">
-    //             <i class="fas fa-eye"></i>
-    //             <span>0</span>
-    //         </div>
-    //         <div class="interacao">
-    //             <i class="fas fa-share"></i>
-    //         </div>
-    //     `;
-
-    //     post.appendChild(postHeader);
-    //     post.appendChild(postConteudo);
-    //     post.appendChild(postInteracoes);
-
-    //     // Adiciona o novo post no topo do feed
-    //     feed.insertBefore(post, feed.firstChild);
-    // }
-
-    // Opcional: Abre a modal se a URL tiver um hash específico (por exemplo, #modal)
     if (window.location.hash === "#modal") {
         openModal();
     }
 
-    // Função para carregar o feed
     function loadFeed() {
         fetch('/api/feed', {
             method: 'GET',
@@ -237,45 +164,67 @@ document.addEventListener("DOMContentLoaded", () => {
     // Função para adicionar um único post ao feed
     function addPostToFeed(post) {
         const feed = document.querySelector(".feed");
-
+    
         // Cria os elementos do novo post
         const postElement = document.createElement("div");
         postElement.className = "post";
-
+    
         const postHeader = document.createElement("div");
         postHeader.className = "post-header";
-
+    
+        // Cria o link para o perfil do usuário
+        const profileLinkImg = document.createElement("a");
+        profileLinkImg.href = `/profile/${post.username}`;
+        profileLinkImg.style.textDecoration = "none"; // Remove o sublinhado, se desejar
+    
         const img = document.createElement("img");
         img.src = post.userAvatar || "https://cdn-icons-png.flaticon.com/512/847/847969.png";
         img.alt = post.userName || "Usuário";
         img.className = "post-perfil";
         img.style.maxWidth = "38px";
         img.style.maxHeight = "38px";
-
+    
+        profileLinkImg.appendChild(img);
+        postHeader.appendChild(profileLinkImg);
+    
         const postInfo = document.createElement("div");
         postInfo.className = "post-info";
-
+    
+        // Cria o link para o nome do usuário
+        const profileLinkName = document.createElement("a");
+        profileLinkName.href = `/profile/${post.username}`;
+        profileLinkName.style.textDecoration = "none";
+        profileLinkName.style.color = "inherit"; // Mantém a cor do texto original
+    
         const nomeUsuario = document.createElement("span");
         nomeUsuario.className = "nome-usuario";
         nomeUsuario.textContent = post.username || "Usuário";
-
+    
+        profileLinkName.appendChild(nomeUsuario);
+        postInfo.appendChild(profileLinkName);
+    
+        // Cria o link para o handle (@)
+        const profileLinkHandle = document.createElement("a");
+        profileLinkHandle.href = `/profile/${post.username}`;
+        profileLinkHandle.style.textDecoration = "none";
+        profileLinkHandle.style.color = "inherit";
+    
         const handle = document.createElement("span");
         handle.className = "handle";
         // Formata a data de criação do post
         const postDate = new Date(post.created_at);
         const formattedDate = formatPostDate(postDate);
         handle.textContent = `@${post.email} · ${formattedDate}`;
-
-        postInfo.appendChild(nomeUsuario);
-        postInfo.appendChild(handle);
-
-        postHeader.appendChild(img);
+    
+        profileLinkHandle.appendChild(handle);
+        postInfo.appendChild(profileLinkHandle);
+    
         postHeader.appendChild(postInfo);
-
+    
         const postConteudo = document.createElement("div");
         postConteudo.className = "post-conteudo";
         postConteudo.textContent = post.content;
-
+    
         const postInteracoes = document.createElement("div");
         postInteracoes.className = "post-interacoes";
         postInteracoes.innerHTML = `
@@ -299,11 +248,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 <i class="fas fa-share"></i>
             </div>
         `;
-
+    
         postElement.appendChild(postHeader);
         postElement.appendChild(postConteudo);
         postElement.appendChild(postInteracoes);
-
+    
         // Adiciona o novo post no final do feed
         feed.appendChild(postElement);
     }

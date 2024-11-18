@@ -25,12 +25,32 @@
         <!-- Navegação por Abas -->
         <nav class="tabs">
             <ul>
-                <li class="tab active" data-tab="for-you">For you</li>
-                <li class="tab" data-tab="following">Following</li>
-                <li class="tab" data-tab="subscribed">Subscribed</li>
+                <li class="tab active" data-tab="for-you">Posts</li>
+                <li class="tab" data-tab="following">Re-posts</li>
+                <li class="tab" data-tab="subscribed">Comments</li>
             </ul>
         </nav>
-
+        <section class="profile-header">
+            <div class="profile-banner">
+                <!-- Opcional: Imagem de banner -->
+            </div>
+            <div class="profile-info">
+                <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Foto do Perfil" class="profile-photo">
+                <div class="profile-name-handle">
+                    <h2 class="profile-name">Nome do Usuário</h2>
+                    <p class="profile-handle">@username</p>
+                </div>
+                <button id="followButton" class="follow-button">Seguir</button>
+                <div class="profile-stats">
+                    <span><strong id="followingCount">0</strong> Seguindo</span>
+                    <span><strong id="followersCount">0</strong> Seguidores</span>
+                </div>
+            </div>
+            <p class="profile-bio">Bio do usuário...</p>
+        </section>
+        
+        
+        
         <!-- Feed de Posts -->
         <main class="feed">
 
