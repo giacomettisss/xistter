@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página de Login</title>
+  <link rel="stylesheet" href="/login/styles.css">
+</head>
+<body>
+  <div id="login-container">
+    <form id="loginForm">
+      <h1>Xistter</h1>
+      <!-- <h4 style="margin-bottom: 30px;">Login with your Xistter account</h4> -->
+      <p style="margin-bottom: 30px;">Login with you Xistter acount</p>
+      <div class="input-group">
+        <!-- <label for="email">E-mail</label> -->
+        <input type="text" id="email" placeholder="E-mail" required>
+      </div>
+      <div class="input-group">
+        <!-- <label for="password">Senha</label> -->
+        <input type="password" id="password" placeholder="Password" required>
+      </div>
+      <button type="submit"><b>Enter</b></button>
+      <p id="error-message"></p>
+    </form>
+
+    <p style="margin-top: 25px">Don't have an account? <a href="/register">Create here.</a>.</p>
+
+  </div>
+  <script src="/login/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,290 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Fonte padrão */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #15202b; /* Fundo escuro */
+    color: #ffffff; /* Texto branco */
+    font-size: 0.92rem;
+}
+
+.container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Cabeçalho fixo */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #15202b;
+    border-bottom: 1px solid #192734;
+    z-index: 1000;
+}
+
+/* Contêiner interno do cabeçalho */
+.fixed_container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 11px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    height: 40px;
+}
+
+.perfil {
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Navegação por Abas */
+.tabs {
+    margin-top: 60px; /* Espaço para o cabeçalho fixo */
+    border-bottom: 1px solid #192734;
+    background-color: #15202b;
+}
+
+.tabs ul {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+}
+
+.tab {
+    padding: 15px 0;
+    cursor: pointer;
+    position: relative;
+}
+
+.tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150%;
+    height: 2px;
+    background-color: #1da1f2; /* Linha azul */
+}
+
+/* Feed */
+.feed {
+    padding: 12px 0px;  /*padding: 10px 15px;*/
+    margin-bottom: 70px; /* Espaço para a navbar inferior */
+}
+
+.post {
+    background-color: #192734;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.post-perfil {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.post-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.nome-usuario {
+    font-weight: bold;
+}
+
+.handle {
+    color: #95a2ad9e;
+    padding-top: 3px;
+    font-size: 0.8em;
+}
+
+.post-conteudo {
+    margin-bottom: 10px;
+    padding: 13px 5px 7px;
+}
+
+.post-interacoes {
+    display: flex;
+    justify-content: space-between;
+    color: #8899a6;
+}
+
+.interacao {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.interacao i {
+    margin-right: 5px;
+}
+
+.interacao span {
+    font-size: 0.8rem;
+}
+
+/* Botão de Ação Flutuante */
+.fab {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    background-color: #1da1f2;
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.fab:hover {
+    background-color: #0d8ddb;
+}
+
+/* Barra de Navegação Inferior */
+.navbar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #15202b;
+    border-top: 1px solid #192734;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    /* max-width: 800px;
+    align-items: center;
+    margin: 0 auto; */
+}
+
+.nav-item {
+    color: #8899a6;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.8rem;
+}
+
+.nav-item.active, .nav-item:hover {
+    color: #1da1f2;
+}
+
+.nav-item i {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.fixed_footer_navbar {
+    display: flex;
+    width: 100%;
+    max-width: 720px;
+    justify-content: space-around;
+}
+
+
+/* MODAL POST */
+
+/* Estilos para a Modal */
+.modal {
+    display: none; /* Oculta a modal por padrão */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0 , 0, 0.8);
+    /* background-color: #15202b; */
+}
+
+.modal-content {
+    /* background-color: #fff; */
+    background-color: #15202b;
+    margin: auto;
+    padding: 35px 30px 30px 25px;
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+    top: 50%;
+    transform: translateY(-80%);
+    border-radius: 8px;
+}
+
+.close-button {
+    color: #aaa;
+    font-size: 28px;
+    /* font-weight: bold; */
+    position: absolute;
+    /* right: 20px; */
+    top: 5px;
+    cursor: pointer;
+    left: 10px;
+}
+
+.close-button:hover {
+    color: #000;
+}
+
+#postForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#postContent {
+    width: 100%;
+    resize: none;
+    font-size: 0.95rem;
+    background-color: #15202b;
+    border: none;
+    padding: 13px 10px 0px 10px;
+    color: white;
+}
+
+#postContent:focus {
+    border: none;
+    outline: none;
+}
+
+#postForm button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #1DA1F2; /* Cor do botão */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#postForm button:hover {
+    background-color: #0d8ddb;
+}

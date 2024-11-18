@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feed do X</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+        <header class="header">
+            <div class="fixed_container">
+            <!-- <img src="logo-x.png" alt="Logo X" class="logo"> -->
+            <img src="https://cdn-icons-png.flaticon.com/512/3541/3541871.png" alt="Perfil" class="perfil" style="max-height: 30px;">
+             <div>
+                <h3>Xistter</h3>
+            </div>
+             <img src="https://cdn-icons-png.flaticon.com/512/10238/10238180.png" alt="" style="max-height: 30px;">
+            </div>
+        </header>
+
+    <div class="container">
+        <!-- Navegação por Abas -->
+        <nav class="tabs">
+            <ul>
+                <li class="tab active" data-tab="for-you">For you</li>
+                <li class="tab" data-tab="following">Following</li>
+                <li class="tab" data-tab="subscribed">Subscribed</li>
+            </ul>
+        </nav>
+
+        <!-- Feed de Posts -->
+        <main class="feed">
+            <!-- Exemplo de Post -->
+            <!-- <div class="post">
+                <div class="post-header">
+                    <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png "
+                        alt="DogeDesigner" class="post-perfil"
+                        style="max-width: 38px; max-height: 38px;">
+                    <div class="post-info">
+                        <span class="nome-usuario">Giacometti</span>
+                        <span class="handle">@MarceloGiacomet · 30m</span>
+                    </div>
+                </div>
+                <div class="post-conteudo">
+                    This is my first post on Xistter!
+                </div>
+                <div class="post-interacoes">
+                    <div class="interacao">
+                        <i class="fas fa-comment"></i>
+                        <span>1.320</span>
+                    </div>
+                    <div class="interacao">
+                        <i class="fas fa-retweet"></i>
+                        <span>1.5K</span>
+                    </div>
+                    <div class="interacao">
+                        <i class="fas fa-heart"></i>
+                        <span>20K</span>
+                    </div>
+                    <div class="interacao">
+                        <i class="fas fa-eye"></i>
+                        <span>20.4M</span>
+                    </div>
+                    <div class="interacao">
+                        <i class="fas fa-share"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="post">
+                <div class="post-header">
+                    <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png "
+                        alt="DogeDesigner" class="post-perfil"
+                        style="max-width: 38px; max-height: 38px;">
+                    <div class="post-info">
+                        <span class="nome-usuario">Bea.Mallagoli</span>
+                        <span class="handle">@Bea.Mallagoli · 45m</span>
+                    </div>
+                </div>
+                <div class="post-conteudo">
+                    Bora ver um filminho?
+                </div>
+                <div class="post-interacoes">
+                    <div class="interacao">
+                        <i class="fas fa-comment"></i>
+                        <span>3.574</span>
+                    </div>
+                    <div class="interacao">
+                        <i class="fas fa-retweet"></i>
+                        <span>6.5K</span>
+                    </div>
+                    <div class="interacao">
+                        <i class="fas fa-heart"></i>
+                        <span>38K</span>
+                    </div>
+                    <div class="interacao">
+                        <i class="fas fa-eye"></i>
+                        <span>9.8M</span>
+                    </div>
+                    <div class="interacao">
+                        <i class="fas fa-share"></i>
+                    </div>
+                </div> -->
+            </div>
+
+            <!-- Adicione mais posts aqui seguindo a mesma estrutura -->
+        </main>
+    </div>
+
+        <!-- Botão de Ação Flutuante -->
+        <button class="fab">
+            <i class="fas fa-plus"></i>
+        </button>
+
+        <!-- Barra de Navegação Inferior -->
+        <footer class="navbar">
+            <div class="fixed_footer_navbar">
+                <a href="#" class="nav-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-search"></i>
+                    <span>Busca</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-bell"></i>
+                    <span>Notificações</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Mensagens</span>
+                </a>
+            </div>
+        </footer>
+
+    <!-- Modal -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <form id="postForm">
+            <textarea id="postContent" placeholder="O que está acontecendo?" rows="5" required></textarea>
+            <button type="submit">Publicar</button>
+        </form>
+    </div>
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
